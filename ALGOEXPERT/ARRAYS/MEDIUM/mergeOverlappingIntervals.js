@@ -17,3 +17,34 @@
 // INPUT: intervals  = [[1, 2], [3, 5], [4, 7], [6, 8], [9, 10]]
 
 // OUTPUT: [[1, 2], [3, 8], [9, 10]]
+
+function mergeOverlappingIntervals(array) {
+  array.sort((a, b) => a[0] - b[0])
+  console.log(array)
+
+  let result = [array[0]]
+
+  function merge(arr1, arr2) {
+    return [arr1[0], Math.max(arr1[1], arr2[1])]
+  }
+
+  for (let i = 1; i < array.length; i++) {
+    const last = result.length - 1
+    if (result[last][1] >= array[i][0]) {
+      result[last] = merge(result[last], array[i])
+    } else {
+      result.push(array[i])
+    }
+  }
+  return result
+}
+
+console.log(
+  mergeOverlappingIntervals([
+    [1, 2],
+    [3, 5],
+    [4, 7],
+    [6, 8],
+    [9, 10],
+  ])
+)
