@@ -17,3 +17,16 @@ function compareByLength(str1, str2) {
 console.log(
   ['Aveek', 'Roy', 'Data Structures', 'Algorithms'].sort(compareByLength)
 )
+
+function compareByFirst(a, b) {
+  return a[0] - b[0]
+}
+
+console.log(
+  [
+    [8, 9],
+    [3, 4],
+    [6, 7],
+    [1, 2],
+  ].sort(compareByFirst)
+)
