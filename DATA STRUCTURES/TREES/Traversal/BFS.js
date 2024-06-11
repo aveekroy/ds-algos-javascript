@@ -36,21 +36,24 @@ class BST {
     }
   }
 
-  contains(value) {
-    if (this.root === null) return false
-    let curr = this.root
-    while (curr) {
-      if (value < curr.value) {
-        curr = curr.left
-      } else if (value > curr.value) {
-        curr = curr.right
-      } else {
-        return true
-      }
+  BFS() {
+    let node = this.root
+    let data = []
+    let queue = []
+    queue.push(node)
+    while (queue.length) {
+      node = queue.shift()
+      data.push(node.value)
+      if (node.left) queue.push(node.left)
+      if (node.right) queue.push(node.right)
     }
-    return false
+    return data
   }
 }
+
+//            10
+//      5           13
+//  2       7   11      16
 
 let tree = new BST()
 tree.insert(10)
@@ -61,9 +64,4 @@ tree.insert(2)
 tree.insert(16)
 tree.insert(7)
 
-console.log(tree)
-console.log(tree.root.left)
-console.log(tree.root.right)
-
-console.log(tree.contains(16))
-console.log(tree.contains(100))
+console.log(tree.BFS())
