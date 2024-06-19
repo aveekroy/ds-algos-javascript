@@ -1,0 +1,32 @@
+// Queues
+
+const queue = []
+queue.unshift(5)
+console.log(queue)
+queue.unshift(6)
+console.log(queue)
+queue.unshift(7)
+console.log(queue)
+console.log('--------------')
+queue.pop()
+console.log(queue)
+queue.pop()
+console.log(queue)
+queue.pop()
+console.log(queue)
+
+console.log('------ OR --------')
+
+queue.push(1)
+console.log(queue)
+queue.push(2)
+console.log(queue)
+queue.push(3)
+console.log(queue)
+console.log('--------------')
+queue.shift()
+console.log(queue)
+queue.shift()
+console.log(queue)
+queue.shift()
+console.log(queue)
