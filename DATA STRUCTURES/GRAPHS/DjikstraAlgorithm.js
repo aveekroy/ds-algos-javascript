@@ -108,9 +108,10 @@ class WeightedGraph {
     console.log(nodes)
     console.log(distances)
     console.log(previous)
-    // as long as there is something to visit
+    // as long as there is something to visit  - Priority Queue
     while (nodes.values.length) {
       smallest = nodes.dequeue().val
+      // Below runs only when we reach the destination vertex
       if (smallest === finish) {
         //We are done and build a path
         while (previous[smallest]) {
@@ -124,15 +125,15 @@ class WeightedGraph {
           //find neighboring node
           let nextNode = this.adjacencyList[smallest][neighbor]
           // calculate new distance to neighboring node
-          let candidate = distances[smallest] + nextNode.weight
+          let newDistance = distances[smallest] + nextNode.weight
           let nextNeighbor = nextNode.node
-          if (candidate < distances[nextNeighbor]) {
+          if (newDistance < distances[nextNeighbor]) {
             // updating new smallest distance to neighbor
-            distances[nextNeighbor] = candidate
+            distances[nextNeighbor] = newDistance
             // updating previous - how we got to neighbor
             previous[nextNeighbor] = smallest
             // enqueue in priority queue with new priority
-            nodes.enqueue(nextNeighbor, candidate)
+            nodes.enqueue(nextNeighbor, newDistance)
           }
         }
       }
@@ -147,22 +148,24 @@ weightedGraph.addVertex('A')
 weightedGraph.addVertex('B')
 weightedGraph.addVertex('C')
 weightedGraph.addVertex('D')
-weightedGraph.addVertex('E')
-weightedGraph.addVertex('F')
+// weightedGraph.addVertex('E')
+// weightedGraph.addVertex('F')
 
 console.log('----- ADD VERTEX --------')
 console.log(weightedGraph)
 
 weightedGraph.addEdge('A', 'B', 4)
-weightedGraph.addEdge('A', 'C', 2)
-weightedGraph.addEdge('B', 'E', 3)
-weightedGraph.addEdge('C', 'D', 2)
-weightedGraph.addEdge('C', 'F', 4)
-weightedGraph.addEdge('D', 'E', 3)
-weightedGraph.addEdge('D', 'F', 1)
-weightedGraph.addEdge('E', 'F', 1)
+weightedGraph.addEdge('A', 'C', 1)
+// weightedGraph.addEdge('B', 'E', 3)
+weightedGraph.addEdge('C', 'D', 4)
+weightedGraph.addEdge('B', 'D', 1)
+weightedGraph.addEdge('B', 'C', 2)
+// weightedGraph.addEdge('C', 'F', 4)
+// weightedGraph.addEdge('D', 'E', 3)
+// weightedGraph.addEdge('D', 'F', 1)
+// weightedGraph.addEdge('E', 'F', 1)
 
 console.log('------- ADD EDGE ------')
 console.log(weightedGraph.adjacencyList)
 
-console.log(weightedGraph.Dijkstra('A', 'E'))
+console.log(weightedGraph.Dijkstra('A', 'D'))

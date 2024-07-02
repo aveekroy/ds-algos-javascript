@@ -1,3 +1,22 @@
+// Shorter version of Priority Queue, but not much efficient
+
+// class PriorityQueue {
+//   constructor() {
+//     this.values = []
+//   }
+//   enqueue(val, priority) {
+//     this.values.push({ val, priority })
+//     this.sort()
+//   }
+//   dequeue() {
+//     return this.values.shift()
+//   }
+
+//   sort() {
+//     this.values.sort((a, b) => a.priority - b.priority)
+//   }
+// }
+
 class Node {
   constructor(val, priority) {
     this.val = val
@@ -85,20 +104,3 @@ console.log(ER.dequeue())
 console.log(ER.dequeue())
 console.log(ER.dequeue())
 console.log(ER.dequeue())
-
-// class PriorityQueue {
-//   constructor() {
-//     this.values = []
-//   }
-//   enqueue(val, priority) {
-//     this.values.push({ val, priority })
-//     this.sort()
-//   }
-//   dequeue() {
-//     return this.values.shift()
-//   }
-
-//   sort() {
-//     this.values.sort((a, b) => a.priority - b.priority)
-//   }
-// }
