@@ -7,10 +7,9 @@ class Node {
 
 class LinkedList {
   constructor(value) {
-    const newNode = new Node(value)
-    this.head = newNode
-    this.tail = newNode
-    this.length = 1
+    this.head = null
+    this.tail = null
+    this.length = 0
   }
 
   printList() {
@@ -36,20 +35,20 @@ class LinkedList {
 
   pop() {
     if (!this.head) return undefined
-    let temp = this.head
-    let pre = this.head
-    while (temp.next) {
-      pre = temp
-      temp = temp.next
+    let current = this.head
+    let newTail = current
+    while (current.next) {
+      newTail = current
+      current = current.next
     }
-    this.tail = pre
+    this.tail = newTail
     this.tail.next = null
     this.length--
     if (this.length === 0) {
       this.head = null
       this.tail = null
     }
-    return this
+    return current
   }
   // Adding a node to the beginning of the LL
   unshift(value) {
@@ -68,29 +67,29 @@ class LinkedList {
   // Removing a node from the beginning of the LL
   shift() {
     if (!this.head) return undefined
-    let temp = this.head
-    this.head = this.head.next
-    temp.next = null
+    let currHead = this.head
+    this.head = currHead.next
+    currHead.next = null
     this.length--
     if (this.length === 0) {
       this.tail = null
     }
-    return this
+    return currHead
   }
   get(index) {
     if (index < 0 || index >= this.length) {
-      return undefined
+      return null
     }
-    let temp = this.head
+    let curr = this.head
     for (let i = 0; i < index; i++) {
-      temp = temp.next
+      curr = curr.next
     }
-    return temp
+    return curr
   }
   set(index, value) {
-    let temp = this.get(index)
-    if (temp) {
-      temp.value = value
+    let foundNode = this.get(index)
+    if (foundNode) {
+      foundNode.value = value
       return true
     }
     return false
@@ -100,21 +99,21 @@ class LinkedList {
     if (index === this.length) return this.push(value)
     if (index === 0) return this.unshift(value)
     const newNode = new Node(value)
-    const temp = this.get(index - 1)
-    newNode.next = temp.next
-    temp.next = newNode
+    const prev = this.get(index - 1)
+    prev.next = newNode
+    newNode.next = prev.next
     this.length++
     return true
   }
 
   remove(index) {
     if (index < 0 || index >= this.length) return false
-    if (index === this.length) return this.pop()
+    if (index === this.length - 1) return this.pop()
     if (index === 0) return this.shift()
-    const before = this.get(index - 1)
-    const temp = before.next
-    before.next = temp.next
-    temp.next = null
+    const prevNode = this.get(index - 1)
+    const removed = prevNode.next
+    prevNode.next = removed.next
+    removed.next = null
     this.length--
     return true
   }
@@ -135,7 +134,7 @@ class LinkedList {
   }
 }
 
-let list = new LinkedList(4)
+let list = new LinkedList()
 console.log(list)
 console.log('--------------')
 console.log(list.push(5))
