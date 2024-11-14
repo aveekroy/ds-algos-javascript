@@ -2,8 +2,14 @@
 // and
 // MinBinaryHeap(Parent nodes are always smaller than the child nodes)
 
-// In Heaps, For any parent at index n, the left child is always stored at 2n+1 and right child is always stored at 2n+2
-// For any child at index n, it's parent is at index (n-1)/2 floored
+// In Heaps,
+
+// For any parent at index n,
+// the left child is always stored at 2n+1 index,
+// the right child is always stored at 2n+2 index
+
+// For any child at index n,
+// it's parent is at index (n-1)/2 floored
 
 class MaxBinaryHeap {
   constructor() {

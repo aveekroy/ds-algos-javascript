@@ -1,5 +1,7 @@
-// Usefulness
-// GPS, Network Routing of Packets, Model of virus spreading in human body, airline tickets - cheapest route to your destination
+// Practical Applications
+// GPS, Network Routing of Packets, Model of virus spreading in human body,
+// airline tickets - cheapest route to your destination
+//
 class Node {
   constructor(val, priority) {
     this.val = val

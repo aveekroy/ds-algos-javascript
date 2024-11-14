@@ -99,7 +99,8 @@ ER.enqueue('cough', 3)
 
 console.log(ER)
 
-console.log(ER.dequeue())
+ER.dequeue()
+console.log(ER)
 console.log(ER.dequeue())
 console.log(ER.dequeue())
 console.log(ER.dequeue())
