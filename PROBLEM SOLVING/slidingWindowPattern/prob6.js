@@ -4,6 +4,14 @@
 
 // SLIDING WINDOW PATTERN - PROBLEM SOLVING
 
+// When to Use:
+// - Problems involving finding a subarray or substring that meets certain conditions (e.g., maximum sum subarray, longest substring without repeating characters).
+// - Problems requiring optimization in linear or near-linear time complexity.
+
+// Tips:
+// - Ensure to handle edge cases such as when the window size is larger than the array length.
+// - Optimize the window movement to avoid redundant calculations.
+
 function maxSubarraySum(arr, num) {
   let maxSum = 0
   let tempSum = 0

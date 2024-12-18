@@ -3,6 +3,15 @@
 
 // MULTIPLE POINTERS PATTERN - PROBLEM SOLVING
 
+// When to Use:
+// - Problems involving searching for pairs of elements (e.g., two-sum problem).
+// - Problems requiring linear time complexity.
+// - Problems involving arrays or sequences.
+
+// Tips:
+// - Ensure that the array is sorted if required for the problem.
+// - Always handle edge cases such as empty arrays or arrays with fewer elements.
+
 function sumZero(arr) {
   let left = 0
   let right = arr.length - 1

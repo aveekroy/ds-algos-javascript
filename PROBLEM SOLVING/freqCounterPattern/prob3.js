@@ -27,3 +27,4 @@ function anagram(str1, str2) {
 }
 
 console.log(anagram('back', 'cabf'))
+console.log(anagram('back', 'cabk'))
