@@ -22,24 +22,33 @@
 // Problem: Implement union find to determine the connected components in a graph.
 
 // STUDY more about this - not understanding this
+
 class UnionFind {
   constructor(size) {
     this.parent = new Array(size).fill(-1)
+    this.rank = new Array(size).fill(0)
   }
 
   find(x) {
-    if (this.parent[x] === -1) return x
-    return this.find(this.parent[x])
+    if (this.parent[x] === -1) {
+      return x
+    }
+    this.parent[x] = this.find(this.parent[x])
+    return this.parent[x]
   }
 
   union(x, y) {
-    const rootX = this.find(x)
-    console.log(rootX)
-
-    const rootY = this.find(y)
-    console.log(rootY)
+    let rootX = this.find(x)
+    let rootY = this.find(y)
     if (rootX !== rootY) {
-      this.parent[rootX] = rootY
+      if (this.rank[rootX] > this.rank[rootY]) {
+        this.parent[rootY] = rootX
+      } else if (this.rank[rootX] < this.rank[rootY]) {
+        this.parent[rootX] = rootY
+      } else {
+        this.parent[rootY] = rootX
+        this.rank[rootX]++
+      }
     }
   }
 }
@@ -47,6 +56,13 @@ class UnionFind {
 const uf = new UnionFind(5)
 uf.union(0, 1)
 uf.union(1, 2)
-uf.union(2, 3)
-console.log(uf.parent)
-console.log(uf.find(4))
+uf.union(3, 4)
+console.log(uf.find(2) === uf.find(0))
+console.log(uf.find(3) === uf.find(4))
+console.log(uf.find(0) === uf.find(4))
+// Output:
+// true
+// true
+// false
+// console.log(uf.find(2) === uf.find(0))
+// console.log(uf.find(3) === uf.find(4))
