@@ -23,22 +23,23 @@ const buildGraphFromEdges = (edges) => {
 
 const shortestPath = (edges, start, end) => {
   const graph = buildGraphFromEdges(edges)
-  const visited = new Set()
+  const visited = new Set([start])
   const queue = [[start, 0]]
   while (queue.length > 0) {
     const [node, distance] = queue.shift()
     if (node === end) return distance
-    if (visited.has(node)) continue
-    visited.add(node)
     for (let neighbor of graph[node]) {
-      queue.push([neighbor, distance + 1])
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor)
+        queue.push([neighbor, distance + 1])
+      }
     }
   }
   return -1
 }
 
 console.log(shortestPath(edges, 'w', 'z')) // 2
-console.log(shortestPath(edges, 'w', 'y')) // 1
+console.log(shortestPath(edges, 'w', 'y')) // 2
 console.log(shortestPath(edges, 'w', 'w')) // 0
 console.log(shortestPath(edges, 'w', 'v')) // 1
 console.log(shortestPath(edges, 'y', 'x')) // 1
