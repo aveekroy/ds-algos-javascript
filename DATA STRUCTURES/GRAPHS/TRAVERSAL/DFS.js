@@ -42,7 +42,6 @@ class Graph {
     const result = []
     const visited = {}
     let currVertex
-
     visited[startVertex] = true
     while (stack.length) {
       currVertex = stack.pop()
