@@ -1,7 +1,10 @@
+// Dijkstra's Algorithm - finds the shortest path from a starting node to all other nodes in a weighted graph
+// can be used in directed as well as undirected graphs
+
 // Practical Applications
 // GPS, Network Routing of Packets, Model of virus spreading in human body,
 // airline tickets - cheapest route to your destination
-//
+
 class Node {
   constructor(val, priority) {
     this.val = val
