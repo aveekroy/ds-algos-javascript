@@ -1,4 +1,6 @@
-// INSERTION SORT -
+// INSERTION SORT is used to sort an array by comparing each element with the previous elements and inserting it in the correct position.
+// Time Complexity - O(n^2)
+// Space Complexity - O(1)
 
 function insertionSort(arr) {
   let i, key, j

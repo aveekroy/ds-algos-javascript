@@ -40,3 +40,5 @@ function runLengthEncoding(string) {
 }
 
 console.log(runLengthEncoding('AAAAAAAAAAAAAABBCCCC'))
+console.log(runLengthEncoding('AAAAAAAAAAAAABBCCCCDD'))
+console.log(runLengthEncoding('aabbbcccc'))

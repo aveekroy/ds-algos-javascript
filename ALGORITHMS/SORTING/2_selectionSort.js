@@ -1,5 +1,8 @@
 // Selection Sort -finds min value items in the array and then swaps it, following which it is sorted
 // Avoid this sort as much as possible
+const swap = (arr, i, j) => {
+  return ([arr[i], arr[j]] = [arr[j], arr[i]])
+}
 
 const selectionSort = (arr) => {
   for (let i = 0; i < arr.length; i++) {
@@ -10,9 +13,7 @@ const selectionSort = (arr) => {
       }
     }
     if (i !== minValueIdx) {
-      let temp = arr[i]
-      arr[i] = arr[minValueIdx]
-      arr[minValueIdx] = temp
+      swap(arr, i, minValueIdx)
     }
   }
   return arr

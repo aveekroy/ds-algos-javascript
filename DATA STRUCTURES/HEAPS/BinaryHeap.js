@@ -11,6 +11,11 @@
 // For any child at index n,
 // it's parent is at index (n-1)/2 floored
 
+// Time Complexity:
+// Insertion - O(log N)
+// Removal - O(log N)
+// Search - O(N)
+
 class MaxBinaryHeap {
   constructor() {
     this.values = []
