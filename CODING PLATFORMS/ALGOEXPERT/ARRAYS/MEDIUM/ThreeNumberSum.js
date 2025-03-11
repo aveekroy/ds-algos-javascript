@@ -42,3 +42,5 @@ function threeNumberSum(array, targetSum) {
 }
 
 console.log(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
+// Time Complexity: O(n^2), where n is the length of the input array
+// Space Complexity: O(n), where n is the length of the input array

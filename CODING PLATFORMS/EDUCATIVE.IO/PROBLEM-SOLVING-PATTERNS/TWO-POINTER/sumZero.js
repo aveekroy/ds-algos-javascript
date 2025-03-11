@@ -10,21 +10,30 @@
 
 // Tips:
 // - Ensure that the array is sorted if required for the problem.
+
 // - Always handle edge cases such as empty arrays or arrays with fewer elements.
 
 function sumZero(arr) {
   let left = 0
   let right = arr.length - 1
+  const result = []
+  // Check if the array is empty or has fewer than 2 elements
+  if (arr.length < 2) {
+    return result
+  }
+  // Iterate through the array using two pointers
   while (left < right) {
     let sum = arr[left] + arr[right]
     if (sum === 0) {
-      return [arr[left], arr[right]]
+      result.push([arr[left], arr[right]])
+      continue
     } else if (sum > 0) {
       right--
     } else {
       left++
     }
   }
+  return result
 }
 
 console.log(sumZero([-3, -1, 0, 3, 2, 1, 4]))

@@ -14,12 +14,12 @@ class LinkedList {
 
   printList() {
     let temp = this.head
-    while (temp !== null) {
+    while (temp) {
       console.log(temp.value)
       temp = temp.next
     }
   }
-
+  // Adding a node to the end of the LL
   push(value) {
     let newNode = new Node(value)
     if (!this.head) {
@@ -32,7 +32,7 @@ class LinkedList {
     this.length++
     return this
   }
-
+  // Removing a node from the end of the LL
   pop() {
     if (!this.head) return undefined
     let current = this.head
@@ -67,15 +67,16 @@ class LinkedList {
   // Removing a node from the beginning of the LL
   shift() {
     if (!this.head) return undefined
-    let currHead = this.head
-    this.head = currHead.next
-    currHead.next = null
+    let current = this.head
+    this.head = current.next
+    current.next = null
     this.length--
     if (this.length === 0) {
       this.tail = null
     }
-    return currHead
+    return current
   }
+  // Accessing a node in a LL by its position
   get(index) {
     if (index < 0 || index >= this.length) {
       return null
@@ -86,6 +87,7 @@ class LinkedList {
     }
     return curr
   }
+  // Changing the value of a node based on its position
   set(index, value) {
     let foundNode = this.get(index)
     if (foundNode) {
@@ -94,6 +96,7 @@ class LinkedList {
     }
     return false
   }
+  // Adding a node to the LL at a specific position
   insert(index, value) {
     if (index < 0 || index >= this.length) return false
     if (index === this.length) return this.push(value)
@@ -105,7 +108,7 @@ class LinkedList {
     this.length++
     return true
   }
-
+  // Removing a node from the LL at a specific position
   remove(index) {
     if (index < 0 || index >= this.length) return false
     if (index === this.length - 1) return this.pop()
@@ -117,7 +120,7 @@ class LinkedList {
     this.length--
     return true
   }
-
+  // Reversing the LL
   reverse() {
     let temp = this.head
     this.head = this.tail
@@ -140,6 +143,7 @@ console.log('------ PUSH ------')
 console.log(list.push(5))
 console.log(list.push(6))
 console.log(list.push(7))
+console.log(list.printList())
 console.log('------ POP ------')
 console.log(list.pop())
 console.log('------ UNSHIFT ------')
