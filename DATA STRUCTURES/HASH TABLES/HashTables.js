@@ -9,10 +9,10 @@ class HashTable {
 
   _hash(key) {
     let total = 0
-    let primeNum = 31
+    let primeNum = 19
     for (let i = 0; i < Math.min(key.length, 100); i++) {
       let char = key[i]
-      let value = Math.abs(char.charCodeAt(0) - 96)
+      let value = Math.abs(char.charCodeAt(0) - 96) // char.charCodeAt(0) gives ASCII value of the character i.e. 'a' = 97, 'b' = 98, etc.
       total = (total * primeNum + value) % this.keyMap.length
     }
     return total

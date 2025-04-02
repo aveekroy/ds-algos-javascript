@@ -125,13 +125,13 @@ class LinkedList {
     let temp = this.head
     this.head = this.tail
     this.tail = temp
-    let next = temp.next
-    let prev = null
-    for (let i = 0; i < this.length; i++) {
-      next = temp.next
-      temp.next = prev
-      prev = temp
-      temp = next
+    let after = temp.next
+    let bfr = null
+    while (temp !== null) {
+      after = temp.next
+      temp.next = bfr
+      bfr = temp
+      temp = after
     }
     return this
   }
@@ -143,6 +143,9 @@ console.log('------ PUSH ------')
 console.log(list.push(5))
 console.log(list.push(6))
 console.log(list.push(7))
+console.log(list.printList())
+console.log('------ REVERSE ------')
+console.log(list.reverse())
 console.log(list.printList())
 console.log('------ POP ------')
 console.log(list.pop())

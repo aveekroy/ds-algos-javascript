@@ -67,14 +67,19 @@ class MaxBinaryHeap {
     if (this.elements > right && this.heap[largest] < this.heap[right])
       largest = right
     if (largest != index) {
-      let tmp = this.heap[largest]
-      this.heap[largest] = this.heap[index]
-      this.heap[index] = tmp
+      //swap the values at index and largest
+      // and call __maxHeapify on the largest index
+      // to ensure the max-heap property is maintained
+      ;[this.heap[largest], this.heap[index]] = [
+        this.heap[index],
+        this.heap[largest],
+      ]
       this.__maxHeapify(largest)
     }
   }
   // Let’s build a max-heap now. Suppose we have n elements in an array which represents our heap.
-  // For every node to be positioned in accordance with the max-heap property, we call the _maxHeapify method at every index of that array, starting from the bottom of the heap
+  // For every node to be positioned in accordance with the max-heap property, we call the _maxHeapify method at every index of that array,
+  // starting from the bottom of the heap
   buildHeap(arr) {
     this.heap = arr
     this.elements = this.heap.length

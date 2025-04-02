@@ -30,3 +30,27 @@ console.log(
     [1, 2],
   ].sort(compareByFirst)
 )
+
+const ARTICLES = [
+  {
+    title: 'A message',
+    upvotes: 12,
+    date: '2020-01-24',
+  },
+  {
+    title: 'Alphabet earnings',
+    upvotes: 2,
+    date: '2019-11-23',
+  },
+  {
+    title: 'Alphabet earnings',
+    upvotes: 33,
+    date: '2019-11-23',
+  },
+]
+
+function compareByUpvotes(a, b) {
+  return b.upvotes - a.upvotes
+}
+const hello = ARTICLES.sort(compareByUpvotes)
+console.log(hello)

@@ -24,5 +24,5 @@ const sameFrequency = (num1, num2) => {
   return true
 }
 
-// sameFrequency(182, 281)
+console.log(sameFrequency(182, 281))
 console.log(sameFrequency(22, 222))
