@@ -7,7 +7,7 @@
 // BFS can also be used for tasks such as finding connected components in a graph, checking bipartiteness, and solving puzzles like the shortest path in a maze.
 
 // BFS can be implemented using a queue. Here, we'll implement BFS for both directed and undirected graphs.
-function bfs(graph, start) {
+const bfs = (graph, start) => {
   const queue = [start]
   const visited = new Set()
   const result = []
@@ -18,7 +18,6 @@ function bfs(graph, start) {
     if (visited.has(node)) continue
 
     visited.add(node)
-    console.log(node)
     result.push(node)
 
     for (const neighbor of graph[node]) {

@@ -14,12 +14,9 @@ const dfsIterative = (graph, start) => {
 
   while (stack.length > 0) {
     const node = stack.pop()
-
     if (visited.has(node)) continue
-
     visited.add(node)
     result.push(node)
-
     for (const neighbor of graph[node]) {
       stack.push(neighbor)
     }
@@ -28,12 +25,9 @@ const dfsIterative = (graph, start) => {
 }
 
 // Recursive DFS
-function dfsRecursive(graph, start, visited = new Set()) {
-  if (visited.has(start)) return
-
+const dfsRecursive = (graph, start, visited = new Set()) => {
+  if (visited.has(start)) return []
   visited.add(start)
-  console.log(start)
-
   for (const neighbor of graph[start]) {
     dfsRecursive(graph, neighbor, visited)
   }
@@ -50,6 +44,6 @@ const graph = {
 }
 
 console.log('DFS Recursive:')
-dfsRecursive(graph, 0)
+console.log(dfsRecursive(graph, 0))
 console.log('DFS Iterative:')
 console.log(dfsIterative(graph, 0))

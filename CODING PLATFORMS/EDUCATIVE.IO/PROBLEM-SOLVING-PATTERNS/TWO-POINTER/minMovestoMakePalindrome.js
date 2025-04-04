@@ -1,4 +1,5 @@
-// Given a string s, return the minimum number of moves required to transform s into a palindrome. In each move, you can swap any two adjacent characters in s.
+// Given a string s, return the minimum number of moves required to transform s into a palindrome.
+// In each move, you can swap any two adjacent characters in s.
 
 function minMovesToMakePalindrome(s) {
   // Counter to keep track of the total number of swaps

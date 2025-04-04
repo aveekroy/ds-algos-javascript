@@ -29,7 +29,7 @@ const reverseWordsInString = (str) => {
   return words.join(' ')
 }
 // Example usage:
-const sentence = 'I am a      student.'
+const sentence = 'I am a student. My name is Aveek Roy.'
 console.log(reverseWordsInString(sentence)) // Output: "student. a am I"
 // Time Complexity: O(n), where n is the length of the input string
 // Space Complexity: O(n), as we are using extra space to store the words
