@@ -1,4 +1,6 @@
-//Given a string word and an abbreviation abbr, return TRUE if the abbreviation matches the given string. Otherwise, return FALSE.
+//Given a string word and an abbreviation abbr,
+// return TRUE if the abbreviation matches the given string.
+// Otherwise, return FALSE.
 
 const validWordAbbreviation = (word, abbr) => {
   let wordIndex = 0,

@@ -3,24 +3,24 @@
 
 function merge(arr1, arr2) {
   let results = []
-  let arrIdx1 = 0
-  let arrIdx2 = 0
-  while (arrIdx1 < arr1.length && arrIdx2 < arr2.length) {
-    if (arr1[arrIdx1] <= arr2[arrIdx2]) {
-      results.push(arr1[arrIdx1])
-      arrIdx1++
+  let arr1Idx = 0
+  let arr2Idx = 0
+  while (arr1Idx < arr1.length && arr2Idx < arr2.length) {
+    if (arr1[arr1Idx] <= arr2[arr2Idx]) {
+      results.push(arr1[arr1Idx])
+      arr1Idx++
     } else {
-      results.push(arr2[arrIdx2])
-      arrIdx2++
+      results.push(arr2[arr2Idx])
+      arr2Idx++
     }
   }
-  while (arrIdx1 < arr1.length) {
-    results.push(arr1[arrIdx1])
-    arrIdx1++
+  while (arr1Idx < arr1.length) {
+    results.push(arr1[arr1Idx])
+    arr1Idx++
   }
-  while (arrIdx2 < arr2.length) {
-    results.push(arr2[arrIdx2])
-    arrIdx2++
+  while (arr2Idx < arr2.length) {
+    results.push(arr2[arr2Idx])
+    arr2Idx++
   }
   return results
 }

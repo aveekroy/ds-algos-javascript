@@ -135,6 +135,24 @@ class LinkedList {
     }
     return this
   }
+
+  // removeNthLastNode(head, n) {
+  //   let right = this.head
+  //   let left = this.head
+  //   for (let i = 0; i < n; i++) {
+  //     right = right.next
+  //   }
+  //   if (!right) {
+  //     return head.next
+  //   }
+  //   while (right.next != null) {
+  //     right = right.next
+  //     left = left.next
+  //     left.next = left.next.next
+
+  //     return head
+  //   }
+  // }
 }
 
 let list = new LinkedList()

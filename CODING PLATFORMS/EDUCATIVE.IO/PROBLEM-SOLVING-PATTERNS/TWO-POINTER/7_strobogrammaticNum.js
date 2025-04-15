@@ -55,7 +55,7 @@ const strobogrammaticNum = (num) => {
 // Example usage:
 const num = '818'
 console.log(strobogrammaticNum(num)) // Output: true
-const nums = ['69', '88', '962', '818', '123']
+const nums = ['69', '88', '962', '2', '818', '123']
 for (let i = 0; i < nums.length; i++) {
   console.log(`${i + 1}.\t num: '${nums[i]}'`)
   console.log(
