@@ -14,10 +14,23 @@ class LinkedList {
 
   printList() {
     let temp = this.head
-    while (temp) {
+    while (temp !== null) {
       console.log(temp.value)
       temp = temp.next
     }
+  }
+  // Template for printing the linked list with forward arrows
+  printListWithForwardArrow() {
+    let temp = this.head
+    let result = ''
+    while (temp != null) {
+      result += temp.value
+      temp = temp.next
+      if (temp != null) result += ' → '
+      // if this is the last node, print null at the end
+      else result += ' → null'
+    }
+    return result
   }
   // Adding a node to the end of the LL
   push(value) {
@@ -103,11 +116,13 @@ class LinkedList {
     if (index === 0) return this.unshift(value)
     const newNode = new Node(value)
     const prev = this.get(index - 1)
+    const temp = prev.next
     prev.next = newNode
-    newNode.next = prev.next
+    newNode.next = temp
     this.length++
     return true
   }
+
   // Removing a node from the LL at a specific position
   remove(index) {
     if (index < 0 || index >= this.length) return false
@@ -136,56 +151,169 @@ class LinkedList {
     return this
   }
 
-  // removeNthLastNode(head, n) {
-  //   let right = this.head
-  //   let left = this.head
-  //   for (let i = 0; i < n; i++) {
-  //     right = right.next
-  //   }
-  //   if (!right) {
-  //     return head.next
-  //   }
-  //   while (right.next != null) {
-  //     right = right.next
-  //     left = left.next
-  //     left.next = left.next.next
+  removeNthLastNode(n) {
+    // Point two pointers, right and left, at head.
+    let right = this.head
+    let left = this.head
 
-  //     return head
-  //   }
+    // Move right pointer n elements away from the left pointer.
+    for (let i = 0; i < n; i++) {
+      right = right.next
+    }
+
+    // Removal of the head node.
+    if (!right) {
+      return this.head.next
+    }
+
+    // Move both pointers until right pointer reaches the last node.
+    while (right.next != null) {
+      right = right.next
+      left = left.next
+    }
+
+    // At this point, left pointer points to (n-1)th element.
+    // So link it to next to next element of left.
+    left.next = left.next.next
+
+    return this.head
+  }
+  middle() {
+    let slow = this.head
+    let fast = this.head
+    while (fast && fast.next) {
+      slow = slow.next
+      fast = fast.next.next
+    }
+    return slow.value
+  }
+  // makeCycleLL() {
+  //   let node1 = this.get(1)
+  //   let node2 = this.get(4)
+  //   node2.next = node1
   // }
+  cycleDetection() {
+    let slow = this.head
+    let fast = this.head
+    while (fast && fast.next) {
+      slow = slow.next
+      fast = fast.next.next
+      if (slow === fast) {
+        return true
+      }
+    }
+    return false
+  }
+  search(value) {
+    let current = this.head
+    while (current) {
+      if (current.value === value) {
+        return true
+      }
+      current = current.next
+    }
+    return false
+  }
+  //remove duplicates
+  removeDuplicates() {
+    let current = this.head
+    let prev = null
+    let values = new Set()
+    while (current) {
+      if (values.has(current.value)) {
+        prev.next = current.next
+        this.length--
+      } else {
+        values.add(current.value)
+        prev = current
+      }
+      current = current.next
+    }
+    return this
+  }
 }
 
 let list = new LinkedList()
-console.log(list)
-console.log('------ PUSH ------')
-console.log(list.push(5))
-console.log(list.push(6))
-console.log(list.push(7))
-console.log(list.printList())
-console.log('------ REVERSE ------')
-console.log(list.reverse())
-console.log(list.printList())
-console.log('------ POP ------')
-console.log(list.pop())
-console.log('------ UNSHIFT ------')
-console.log(list.unshift(3))
-console.log('------ SHIFT ------')
-console.log(list.shift())
-console.log('------ GET ------')
-console.log(list.get(0))
-console.log('------ SET ------')
-console.log(list.set(1, 9))
-console.log(list)
-console.log('------ INSERT ------')
-console.log(list.insert(1, 8))
-console.log(list)
-console.log('------ REMOVE ------')
-console.log(list.remove(1))
-console.log(list)
-console.log('------ REVERSE ------')
-console.log(list.reverse())
-console.log('------ PRINT LL ------')
-console.log(list.printList())
-console.log('--------------')
-
-// console.log(list.push('Hello'))
+console.log(
+  '------------------------------ PUSH: adding at the end of LL ------------------------------'
+)
+list.push(5)
+list.push(6)
+list.push(7)
+list.push(8)
+list.push(9)
+list.push(10)
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ POP: removing from the end of the LL ------------------------------'
+)
+list.pop()
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ UNSHIFT: adding at the beggining of LL ------------------------------'
+)
+list.unshift(3)
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ SHIFT: removing from the beginning of the LL ------------------'
+)
+list.shift()
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ GET: getting the node details from index provided ------------------'
+)
+console.log(list.get(2))
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ SET: setting the node value from index and vaue provided ------------------'
+)
+list.set(1, 12)
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ INSERT: inserting a node anywhere in the LL ------------------'
+)
+list.insert(3, 19)
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ REMOVE: removing a node from the LL by providing the index ------------------'
+)
+list.remove(1)
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ REVERSE: reversing the LL ------------------'
+)
+list.reverse()
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ MIDDLE: middle node of the LL ------------------'
+)
+console.log(list.middle())
+// console.log('------------------------------ MAKE CYCLE ------------------')
+// list.makeCycleLL()
+// console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ CYCLE DETECTION: Detecting if any cycles present in the LL ------------------'
+)
+console.log(list.cycleDetection())
+console.log(
+  '------------------------------ REMOVE NTH LAST NODE: removing nth node from the end of the LL provided the index ------------------'
+)
+list.removeNthLastNode(3)
+console.log(list.printListWithForwardArrow())
+list.removeNthLastNode(2)
+console.log(list.printListWithForwardArrow())
+console.log(
+  '------------------------------ SEARCH: searching a value in the LL------------------'
+)
+console.log(list.search(5))
+console.log(list.search(100))
+console.log(
+  '------------------------------ REMOVE DUPLICATES: removing duplicates from the LL ------------------'
+)
+list.push(5)
+list.push(6)
+list.push(6)
+list.push(7)
+console.log(list.printListWithForwardArrow())
+list.removeDuplicates()
+console.log(list.printListWithForwardArrow())
